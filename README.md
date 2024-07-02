@@ -4,7 +4,7 @@ Esse é um projeto de CRUD com Laravel, contexto do CRUD é um controle de séri
 
 ## Principais folders:
 controle-series\resources\views\series
-app\Http\Controllers
+app\Http\Controllers\SeriesController.php
 app\Models\Serie.php
 routes
 database\migrations\2024_07_01_040725_create_series_table.php
