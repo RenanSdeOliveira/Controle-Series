@@ -13,6 +13,7 @@ database\database.sqlite
 ## Para Iniciar
 comando: php artisan serve
 
+pagina: http://127.0.0.1:8000/series
 .
 .
 .
