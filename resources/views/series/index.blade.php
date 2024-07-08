@@ -1,23 +1,24 @@
 <x-layout title="Séries">
-    <a href="/series/criar">Adicionar</a>
-     <ul>
+    <a href="/series/criar" class="btn btn-dark mb-2">Adicionar</a>
+     <ul class="list-group">
         @foreach ($series as $serie)
-        <li>{{$serie->nome}}</li>
-        <div>
+        <li class="list-group-item d-flex justify-content-between align-items-center">{{$serie->nome}}
+        <span class="d-flex">
                     <form action="/series/{{$serie->id}}/edit" method="post">
                       @csrf
                       @method('GET')
-                      <button type="submit" class="">Editar {{$serie->nome}}</button>
+                      <button type="submit" class="">Editar</button>
                     </form>
-        </div>
-        <div>
+       
+        
                     <form action="/series/{{$serie->id}}" method="post">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="">Remover {{$serie->nome}}</button>
+                      <button type="submit" class="">Remover</button>
                     </form>
-        </div>
         
+        </span>
+        </li>
         @endforeach
      </ul>
     

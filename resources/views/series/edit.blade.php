@@ -4,10 +4,12 @@
         @method('PUT')
         <div>
           <label for="title">{{$serie->nome}}</label>
+        </div> 
+          <label for="title">Novo Nome: </label>
           <input type="text" class="" id="{{$serie->id}}" name="nome"
             value="{{ $serie->nome }}" required>
-        </div>       
-        <button type="submit" class="">Update Serie</button>
+              
+        <button type="submit" class="">Atualizar Serie</button>
     </form>
 </x-layout>
 
