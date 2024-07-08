@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $series = Serie::query()->orderBy('nome')->get();
-
+        $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         //$series = DB::select('Select nome From series;');
        
 
-        return view('series.index', compact('series') );
+        return view('series.index', compact('series'));
 
     }
 
@@ -30,7 +30,9 @@ class SeriesController extends Controller
         $serie = new Serie();
         $serie->nome = $nomeSerie;
         $serie->save();
+        $request->session()->flash('mensagem.successo', 'Serie criada');
         return redirect('/series');
+        
         /*
         if (DB::insert('INSERT INTO series (nome) VALUES (?)', [$nomeSerie] )){
             return redirect('/series');
@@ -58,16 +60,17 @@ class SeriesController extends Controller
       $serie = Serie::find($id);
       $novoNomeSerie = $request->input('nome');
       $serie->update(['nome' => $novoNomeSerie]);
-
-      return redirect('/series')->with('successo', 'Serie atualizada');
+      $request->session()->flash('mensagem.successo', 'Serie atualizada');
+      return redirect('/series');
      
     }
     
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
       $serie = Serie::find($id);
       $serie->delete();
-      return redirect('/series')->with('successo', 'Serie deletada');
+      $request->session()->flash('mensagem.successo', 'Serie deletada');
+      return redirect('/series');
     }
 }
 
